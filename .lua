@@ -1,84 +1,119 @@
-local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local GUI = loadstring(game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/aaaa"))()
 
-OrionLib:MakeNotification({
-	Name = "Logged in!",
-	Content = "Welcome to Uppercut Hub"..Player.Name.." ",
-	Image = "rbxassetid://11915607895",
-	Time = 5
-})
+local UI = GUI:CreateWindow("the um","lop")
 
-local Player = game.Players.LocalPlayer
+local Home = UI:addPage("Home",1,true,6)
 
-local Window = OrionLib:MakeWindow({Name = "Orion Example", HidePremium = false, SaveConfig = true, ConfigFolder = "Orion"})
+Home:addLabel("This is a Label","Lol this funny")
 
-OrionLib:MakeNotification({
-	Name = "Logged in!",
-	Content = "Welcome to Uppercut Hub"..Player.Name.." ",
-	Image = "rbxassetid://11915607895",
-	Time = 5
-})
+Home:addButton("This is a button",function()
+    game.StarterGui:SetCore("SendNotification",{
+        Title = "Clicked";
+        Text = "Lo";
+    })
+end)
 
-_G.Key = "Ents-KarEe-Kuyto-Hetad-HackO"
-
-_G.KeyInput = "string"
-
-function MakeScriptHub()
-print("key is correct")
-end
-
-function CorrectKeyNotification()
-    OrionLib:MakeNotification({
-	Name = "Correct Key!",
-	Content = "Wait Script",
-	Image = "rbxassetid://11915607895",
-	Time = 5
-})
-wait(3)
-if wait(3) then
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/PeomPokkao/ScriptLastedButinUikeySystem/main/README.md"))();
+Home:addToggle("This is a Toggle",function(value)
+    print(value)
+    if value == false then 
+        game.StarterGui:SetCore("SendNotification",{
+            Title = "Toggle";
+            Text = "false";
+        })
+    else 
+        game.StarterGui:SetCore("SendNotification",{
+            Title = "Toggle";
+            Text = "true";
+        })
     end
+end)
+
+Home:addSlider("This is a Slider",16,100,function(value)
+    print(value)
+end)
+
+Home:addTextBox("This is a TextBox","Um",function(value)
+    game.StarterGui:SetCore("SendNotification",{
+        Title = "Wrote";
+        Text = value;
+    })
+end)
+
+Home:addDropdown("This is a Dropdown",{"Um","Yep","Lop","GG"},1,function(value)
+    game.StarterGui:SetCore("SendNotification",{
+        Title = "Selected :";
+        Text = value;
+    }) 
+end)
+
+-- Just an example of how you would actually use it i guess
+
+local LP = UI:addPage("Local",2,false,6)
+
+-- Label
+
+LP:addLabel("Local","Don't use in games with anti cheats")
+
+--- Button
+
+LP:addButton("DIE",function()
+    game.Players.LocalPlayer.Character.Humanoid.Health = 0
+end)
+
+-- Toggle
+
+LP:addToggle("Sprint",function(value)
+    if value == false then
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
+    else
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 24
+    end
+end)
+
+-- Slider
+
+LP:addSlider("WalkSpeed",16,150,function(value)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = value
+end)
+
+-- Textbox
+
+LP:addTextBox("Jump Power / 50 is default","Number here",function(value)
+    game.Players.LocalPlayer.Character.Humanoid.JumpPower = value
+end)
+
+-- Dropdown 
+
+local PLIST = {}
+
+for i,v in pairs(game:GetService("Players"):GetPlayers()) do
+    table.insert(PLIST,v.DisplayName)
 end
 
-function IncorrectKeyNotification()
-    OrionLib:MakeNotification({
-	Name = "Incorrect Key!",
-	Content = "You have entered the Incorrectcorrect key!",
-	Image = "rbxassetid://11915607895",
-	Time = 5
-})
-end
+LP:addDropdown("Teleport to Player",PLIST,4,function(value)
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =  game.Players[value].Character.HumanoidRootPart.CFrame * CFrame.new(0,2,1)
+end)
 
 
-local Tab = Window:MakeTab({
-	Name = "Key",
-	Icon = "rbxassetid://11915607895",
-	PremiumOnly = false
-})
+-- Spam 
 
-Tab:AddTextbox({
-	Name = "Enter Key",
-	Default = "",
-	TextDisappear = true,
-	Callback = function(Value)
-		_G.KeyInput = Value
-	end	  
-})
+LP:addLabel("Spam","This is just to show how it looks with more ui elements")
 
-Tab:AddButton({
-	Name = "Check Key!",
-	Callback = function()
-      		if _G.KeyInput == _G.Key then
-      		MakeScriptHub()
-      		CorrectKeyNotification()    
-      		else
-      		    IncorrectKeyNotification()
-      		end
-  	end
-})
+LP:addDropdown("Teleport to Player",PLIST,4,function(value)
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =  game.Players[value].Character.HumanoidRootPart.CFrame * CFrame.new(0,2,1)
+end)
 
-Tab:AddButton({
-	Name = "Destroy UI",
-	Callback = function()
-        OrionLib:Destroy()
-  	end    
-})
+
+LP:addDropdown("Teleport to Player",PLIST,4,function(value)
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =  game.Players[value].Character.HumanoidRootPart.CFrame * CFrame.new(0,2,1)
+end)
+
+
+LP:addDropdown("Teleport to Player",PLIST,4,function(value)
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =  game.Players[value].Character.HumanoidRootPart.CFrame * CFrame.new(0,2,1)
+end)
+
+
+LP:addDropdown("Teleport to Player",PLIST,4,function(value)
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =  game.Players[value].Character.HumanoidRootPart.CFrame * CFrame.new(0,2,1)
+end)
